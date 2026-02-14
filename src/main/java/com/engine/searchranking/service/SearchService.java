@@ -11,10 +11,9 @@ import com.engine.searchranking.dto.CachedQueryResult;
 import com.engine.searchranking.dto.SearchResult;
 import com.engine.searchranking.core.document.Document;
 
-
 @Service
 public class SearchService {
-    
+
     private static final int CACHE_SIZE = 100; // cache size
 
     private final SearchEngine searchEngine;
@@ -33,7 +32,8 @@ public class SearchService {
         CachedQueryResult cachedResult = queryCache.get(query);
         if (cachedResult != null && cachedResult.getDepth() >= (page + 1) * pageSize) {
             // return cached results if they cover the requested page
-            return cachedResult.getResults().subList(page * pageSize, Math.min(cachedResult.getResults().size(), (page + 1) * pageSize));
+            return cachedResult.getResults().subList(page * pageSize,
+                    Math.min(cachedResult.getResults().size(), (page + 1) * pageSize));
         }
 
         // if not in cache, perform search
