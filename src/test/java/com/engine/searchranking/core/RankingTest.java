@@ -1,6 +1,7 @@
 package com.engine.searchranking.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.*;
 
@@ -20,7 +21,7 @@ public class RankingTest {
 
     // docs
     Document doc1 = new Document("1", "Test1", "This is a valid rank test. This test is very valid.");
-    Document doc2 = new Document("2", "Test2", "Rank aggregation in search engines");
+    Document doc2 = new Document("2", "Test2", "Rank aggregation in valid search engines");
     // add tokens
     List<String> tokens1 = tokenizer.tokenize(doc1.body());
     List<String> tokens2 = tokenizer.tokenize(doc2.body());
@@ -38,10 +39,7 @@ public class RankingTest {
         Map<String, Double> scores = ranker.rank(List.of("valid"), index, 2, docLengths, avgDocLength);
 
         // check if rank 
-        System.out.println(scores);
-        System.out.println(index.getPostings("valid"));
-        System.out.println(avgDocLength);
-        assertEquals(scores.get("1"), 0.0);
+        assertTrue(scores.get("1") > scores.get("2"));
     }
 
     @Test

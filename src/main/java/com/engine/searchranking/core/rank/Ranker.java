@@ -10,6 +10,8 @@ import com.engine.searchranking.core.index.InvertedIndex;
 // - denominator to be assumed tf then tf * (k1 + 1) / tf = k1 + 1, 
 // - which is the upper bound of tf component, 
 // - limiting the influence of term frequency
+// - idf logic log to prevent exponential increase, + 0.5 to prevent division by zero,
+// + 1 for preventing penalties for having a common word
 
 public class Ranker {
 
