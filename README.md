@@ -62,4 +62,5 @@ How to the run the tests:
 
 ### Contact
 Mayank Joshi - @dirtyyuka - mayankjoshi455@gmail.com
+<br>
 Project link: https://github.com/dirtyyuka/search-ranking-engine
